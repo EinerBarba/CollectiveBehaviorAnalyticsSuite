@@ -1,0 +1,80 @@
+site_name: Collective Behavior Analytics
+site_description: Developer documentation for the Collective Behavior Analytics system.
+
+# Lets the built site work when opened directly from disk, as well as when hosted.
+use_directory_urls: false
+
+# Files in docs/ that are not pages.
+exclude_docs: |
+  requirements.txt
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - navigation.sections
+    - navigation.top
+    - content.code.copy
+    - search.suggest
+
+nav:
+  - Home: index.md
+  - Overview:
+      - Architecture: architecture.md
+      - Background jobs: jobs.md
+  - Pipeline:
+      - 1. Light tracking: pipeline/light-tracking.md
+      - 2. Subject detection: pipeline/detection.md
+      - 3. Subject tracking: pipeline/tracking.md
+      - 4. Subject kinematics: pipeline/kinematics.md
+      - 5. Collective behavior: pipeline/collective-behavior.md
+      - Data import: pipeline/import.md
+  - Data and access:
+      - Data model: data-model.md
+      - Storage: storage.md
+      - Authentication: auth.md
+  - Reference:
+      - Core: reference/core.md
+      - Detection and light: reference/cv.md
+      - Video: reference/video.md
+      - Tracking: reference/tracking.md
+      - Analysis: reference/analysis.md
+      - Jobs: reference/jobs.md
+      - Models: reference/models.md
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [.]
+          options:
+            docstring_style: google
+            docstring_options:
+              # Most functions document types through annotations, not docstrings.
+              warn_missing_types: false
+            members_order: source
+            show_root_heading: true
+            show_source: false
+            show_signature_annotations: true
+            separate_signature: true
+            merge_init_into_class: true
+            heading_level: 2
+
+markdown_extensions:
+  - admonition
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.highlight
+  - pymdownx.superfences
