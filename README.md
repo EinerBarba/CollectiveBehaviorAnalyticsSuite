@@ -25,8 +25,9 @@ The frontend has five views:
 ### 1. Clone repository
 
 ```bash
-git clone <your-repository-url>
-cd <repository-folder>
+git clone https://github.com/EinerBarba/CollectiveBehaviorAnalyticsSuite.git
+cd CollectiveBehaviorAnalyticsSuite
+
 ```
 
 ### 2. Create the database
